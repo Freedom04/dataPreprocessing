@@ -19,7 +19,7 @@ def read_mtx(mtx_file_path: str):
     return compressed sparse row matrix: scipy.sparse.csr_matrix
     """
     sparse_matrix = mmread(mtx_file_path)
-    expression_matrix = sparse_matrix.A.astype(np.float64)
+    expression_matrix = sparse_matrix.A
     # (cells x genes) or (cells x peaks)
     expression_matrix = expression_matrix.transpose((1, 0))
     csr_expression_matrix = csr_matrix(expression_matrix, dtype=np.float64)
